@@ -22,9 +22,9 @@ const TopDiscuss = () => {
     <div>
       <h3 style={{ fontSize: '17px', margin: '0 0 13px 0' }}>Diskusi 5 teratas</h3>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {discuss.map(el => {
+        {discuss.map((el, idx) => {
           return (
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+            <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
               <div style={{
                 backgroundColor: color.brown,
                 width: '20px',

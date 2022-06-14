@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Discuss from './Discuss'
 import CommentList from './CommentList'
 import InsertComment from './InsertComment'
 import TopDiscuss from './TopDiscuss'
 import styled from '@emotion/styled'
+import { getComments } from '../Axios/GetData'
 
 const BodyOuter = styled.div`
     display: flex;
@@ -37,13 +38,27 @@ const Right = styled.div`
 `
 
 const Body = () => {
+    const [data, setData] = useState([])
+
+    const fetchItems = async () => {
+        const result = await getComments();
+        setData(result)
+    }
+
+    useEffect(() => {
+        fetchItems();
+    }, [])
     return (
         <BodyOuter>
             <BodyInner>
                 <Left>
                     <Discuss />
-                    <CommentList />
-                    <InsertComment />
+                    <CommentList
+                        data={data}
+                    />
+                    <InsertComment
+                        fetchComment={() => fetchItems()}
+                    />
                 </Left>
                 <Right>
                     <TopDiscuss />

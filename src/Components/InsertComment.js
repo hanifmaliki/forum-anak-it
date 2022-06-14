@@ -12,7 +12,7 @@ const Container = styled.div`
     }
 `
 
-function InsertComment() {
+function InsertComment({ fetchComment }) {
   const [namaValue, setNamaValue] = useState('')
   const [emailValue, setEmailValue] = useState('')
   const [komenValue, setKomenValue] = useState('')
@@ -26,6 +26,12 @@ function InsertComment() {
     namaValue.length > 0 ? setNamaMode(2) : setNamaMode(1)
     emailValue.match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/) ? setEmailMode(2) : setEmailMode(1)
     komenValue.length > 0 ? setKomenMode(2) : setKomenMode(1)
+
+    if (namaValue.length > 0 && emailValue.match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/)
+      && komenValue.length > 0) {
+      fetchComment()
+      handleClickReset()
+    }
   }
 
   const handleClickReset = () => {
