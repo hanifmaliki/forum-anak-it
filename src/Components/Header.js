@@ -2,32 +2,13 @@ import React from 'react'
 import styled from "@emotion/styled";
 import { HeaderContainer, HeaderTitle } from './StyledComponents'
 import color from './Color';
-import { Search } from '@mui/icons-material';
+import SearchBox from './SearchBox';
 
-const SearchWrapper = styled.div`
-    width: 38%;
-    margin-right: 22px;
-    position: relative;
-`
-
-const SearchBox = styled.input`
-    width: 100%;
-    height: 28px;
-    padding-inline: 10px;
-    box-sizing: border-box;
-    border: 0;
-    border-radius: 5px;
-    background-color: #cfc9c2;
-    &:focus {
-        background-color: white;
+const Menu = styled.div`
+    display: flex;
+    @media (max-width: 700px) {
+        display: none;
     }
-`
-
-const SearchIcon = styled(Search)`
-    position: absolute;
-    font-size: 18px;
-    right: 8px;
-    top: 5px;
 `
 
 const Dropdown = styled.div`
@@ -76,28 +57,62 @@ const DropdownContent = styled.div`
     }
 `
 
-const Header = ({ setLoginVisible, setRegisterVisible }) => {
+const MenuLineWrapper = styled.div`
+    background-color: gray;
+    padding: 4px;
+    border-radius: 5px;
+    display: none;
+    &:hover {
+        cursor: pointer;
+    }
+    @media (max-width: 700px) {
+        display: block;
+    }
+`
+
+const WrapperSearch = styled.div`
+    width: 38%;
+    margin-right: 22px;
+    @media (max-width: 700px) {
+        display: none;
+    }
+`
+
+const MenuLine = styled.div`
+    width: 30px;
+    height: 3px;
+    background-color: black;
+    margin: 4px 0;
+`
+
+const Header = ({ setSideMenuVisible, setLoginVisible, setRegisterVisible }) => {
     return (
         <HeaderContainer>
             <HeaderTitle>Forum anak IT</HeaderTitle>
-            <SearchWrapper>
-                <SearchBox type="text" placeholder='Search'></SearchBox>
-                <SearchIcon />
-            </SearchWrapper>
-            <Dropdown className="dropdown">
-                <button className="dropbtn">Categories
-                    <i className="fa fa-caret-down"></i>
-                </button>
-                <DropdownContent className="dropdown-content">
-                    <span>Linux</span>
-                    <span>Windows</span>
-                    <span>MAC OS</span>
-                    <span>Android</span>
-                    <span>iOS</span>
-                </DropdownContent>
-            </Dropdown>
-            <span onClick={() => setLoginVisible(true)}>Login</span>
-            <span onClick={() => setRegisterVisible(true)}>Register</span>
+            <WrapperSearch>
+                <SearchBox />
+            </WrapperSearch>
+            <Menu>
+                <Dropdown className="dropdown">
+                    <button className="dropbtn">Categories
+                        <i className="fa fa-caret-down"></i>
+                    </button>
+                    <DropdownContent className="dropdown-content">
+                        <span>Linux</span>
+                        <span>Windows</span>
+                        <span>MAC OS</span>
+                        <span>Android</span>
+                        <span>iOS</span>
+                    </DropdownContent>
+                </Dropdown>
+                <span onClick={() => setLoginVisible(true)}>Login</span>
+                <span onClick={() => setRegisterVisible(true)}>Register</span>
+            </Menu>
+            <MenuLineWrapper onClick={() => setSideMenuVisible(true)}>
+                <MenuLine />
+                <MenuLine />
+                <MenuLine />
+            </MenuLineWrapper>
         </HeaderContainer>
     )
 }

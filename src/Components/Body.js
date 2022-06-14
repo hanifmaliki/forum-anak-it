@@ -15,18 +15,25 @@ const BodyInner = styled.div`
     width: 70%;
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 `
 
 const Left = styled.div`
-    width: 70%;
+    width: 67%;
     display: flex;
     flex-direction: column;
+    @media (max-width: 990px) {
+        width: 100%;
+    }
 `
 
 const Right = styled.div`
-    width: 30%;
+    width: 29%;
     display: flex;
     flex-direction: column;
+    @media (max-width: 990px) {
+        width: 100%;
+    }
 `
 
 const Body = () => {

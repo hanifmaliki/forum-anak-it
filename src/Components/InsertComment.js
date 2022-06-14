@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import { FormWrapper, FormInput, FormInputArea, FormAlert, FormSubmit } from './StyledComponents'
 import color from './Color'
+import styled from '@emotion/styled';
+
+const border = '1px solid ' + color.gray;
+
+const Container = styled.div`
+    border-right: ${border};
+    @media (max-width: 990px) {
+        border-right: 0;
+    }
+`
 
 function InsertComment() {
   const [namaValue, setNamaValue] = useState('')
@@ -14,7 +24,7 @@ function InsertComment() {
 
   const handleClickSubmit = () => {
     namaValue.length > 0 ? setNamaMode(2) : setNamaMode(1)
-    emailValue.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) ? setEmailMode(2) : setEmailMode(1)
+    emailValue.match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/) ? setEmailMode(2) : setEmailMode(1)
     komenValue.length > 0 ? setKomenMode(2) : setKomenMode(1)
   }
 
@@ -27,9 +37,8 @@ function InsertComment() {
     setKomenMode(0)
   }
 
-  const border = '1px solid ' + color.gray;
   return (
-    <div style={{ position: 'relative', marginBottom: '20px', borderRight: border, borderTop: border, paddingTop: '18px' }}>
+    <Container style={{ position: 'relative', marginBottom: '20px', borderTop: border, paddingTop: '18px' }}>
       <h3 style={{ position: 'absolute', margin: '0', top: '-16px', backgroundColor: 'white', width: '195px' }}>Tambahkan komentar</h3>
       <FormWrapper>
         <FormInput type='text' placeholder='Nama' value={namaValue} style={{
@@ -56,7 +65,7 @@ function InsertComment() {
         <FormSubmit style={{ backgroundColor: 'rgb(194 194 194)', color: color.black }} onClick={() => handleClickReset()}>Reset</FormSubmit>
         <FormSubmit onClick={() => handleClickSubmit()}>Submit</FormSubmit>
       </div>
-    </div>
+    </Container>
   )
 }
 

@@ -14,7 +14,7 @@ function RegisterModal({ visible, onClose }) {
 
   const handleClickSubmit = () => {
     nameValue.length > 0 ? setNameMode(2) : setNameMode(1)
-    emailValue.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) ? setEmailMode(2) : setEmailMode(1)
+    emailValue.match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/) ? setEmailMode(2) : setEmailMode(1)
     passValue.length > 0 ? setPassMode(2) : setPassMode(1)
   }
 

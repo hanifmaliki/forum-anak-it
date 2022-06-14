@@ -13,7 +13,10 @@ export const HeaderContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: ${color.brown};
-    & > span {
+    @media (max-width: 700px) {
+        justify-content: space-around;
+    }
+    & > div > span {
         color: white;
         text-align: center;
         padding: 12px 13px;
@@ -50,6 +53,9 @@ export const ModalInner = styled.div`
     border: 1px solid #888;
     width: 36%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    @media (max-width: 580px) {
+        width: 70%;
+    }
 `
 
 export const ModalTitle = styled.h3`

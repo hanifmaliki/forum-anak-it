@@ -11,7 +11,7 @@ function LoginModal({ visible, onClose }) {
     const [passMode, setPassMode] = useState(0)
 
     const handleClickSubmit = () => {
-        emailValue.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) ? setEmailMode(2) : setEmailMode(1)
+        emailValue.match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/) ? setEmailMode(2) : setEmailMode(1)
         passValue.length > 0 ? setPassMode(2) : setPassMode(1)
     }
 
